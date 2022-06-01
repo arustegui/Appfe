@@ -49,13 +49,14 @@
             this.btnCopiarcp = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnAliasp12 = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn3
             // 
-            this.btn3.Location = new System.Drawing.Point(310, 459);
+            this.btn3.Location = new System.Drawing.Point(193, 459);
             this.btn3.Name = "btn3";
-            this.btn3.Size = new System.Drawing.Size(112, 23);
+            this.btn3.Size = new System.Drawing.Size(121, 23);
             this.btn3.TabIndex = 0;
             this.btn3.Text = "Generar Aliasp12";
             this.btn3.UseVisualStyleBackColor = true;
@@ -63,9 +64,9 @@
             // 
             // btn1
             // 
-            this.btn1.Location = new System.Drawing.Point(310, 317);
+            this.btn1.Location = new System.Drawing.Point(193, 317);
             this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(117, 23);
+            this.btn1.Size = new System.Drawing.Size(121, 23);
             this.btn1.TabIndex = 2;
             this.btn1.Text = "Generar CSR";
             this.btn1.UseVisualStyleBackColor = true;
@@ -74,7 +75,7 @@
             // lblCuit
             // 
             this.lblCuit.AutoSize = true;
-            this.lblCuit.Location = new System.Drawing.Point(66, 212);
+            this.lblCuit.Location = new System.Drawing.Point(70, 220);
             this.lblCuit.Name = "lblCuit";
             this.lblCuit.Size = new System.Drawing.Size(32, 15);
             this.lblCuit.TabIndex = 6;
@@ -84,7 +85,7 @@
             // lblRsocial
             // 
             this.lblRsocial.AutoSize = true;
-            this.lblRsocial.Location = new System.Drawing.Point(35, 261);
+            this.lblRsocial.Location = new System.Drawing.Point(35, 264);
             this.lblRsocial.Name = "lblRsocial";
             this.lblRsocial.Size = new System.Drawing.Size(73, 15);
             this.lblRsocial.TabIndex = 7;
@@ -94,7 +95,7 @@
             // lblCp
             // 
             this.lblCp.AutoSize = true;
-            this.lblCp.Location = new System.Drawing.Point(76, 112);
+            this.lblCp.Location = new System.Drawing.Point(81, 132);
             this.lblCp.Name = "lblCp";
             this.lblCp.Size = new System.Drawing.Size(22, 15);
             this.lblCp.TabIndex = 8;
@@ -127,7 +128,7 @@
             // 
             // txtCp
             // 
-            this.txtCp.Location = new System.Drawing.Point(114, 109);
+            this.txtCp.Location = new System.Drawing.Point(114, 124);
             this.txtCp.Name = "txtCp";
             this.txtCp.Size = new System.Drawing.Size(567, 23);
             this.txtCp.TabIndex = 12;
@@ -168,9 +169,9 @@
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(331, 163);
+            this.btnGenerar.Location = new System.Drawing.Point(193, 163);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerar.Size = new System.Drawing.Size(121, 23);
             this.btnGenerar.TabIndex = 19;
             this.btnGenerar.Text = "Generar CP";
             this.btnGenerar.UseVisualStyleBackColor = true;
@@ -203,16 +204,17 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(301, 67);
+            this.button2.Location = new System.Drawing.Point(193, 76);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(121, 23);
             this.button2.TabIndex = 23;
             this.button2.Text = "Crear Carpeta";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnCopiarcp
             // 
-            this.btnCopiarcp.Location = new System.Drawing.Point(441, 163);
+            this.btnCopiarcp.Location = new System.Drawing.Point(369, 163);
             this.btnCopiarcp.Name = "btnCopiarcp";
             this.btnCopiarcp.Size = new System.Drawing.Size(75, 23);
             this.btnCopiarcp.TabIndex = 24;
@@ -222,7 +224,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(454, 317);
+            this.button1.Location = new System.Drawing.Point(369, 317);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 25;
@@ -232,18 +234,29 @@
             // 
             // btnAliasp12
             // 
-            this.btnAliasp12.Location = new System.Drawing.Point(454, 459);
+            this.btnAliasp12.Location = new System.Drawing.Point(369, 459);
             this.btnAliasp12.Name = "btnAliasp12";
             this.btnAliasp12.Size = new System.Drawing.Size(75, 23);
             this.btnAliasp12.TabIndex = 26;
             this.btnAliasp12.Text = "Ir a carpeta";
             this.btnAliasp12.UseVisualStyleBackColor = true;
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(486, 317);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 27;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(983, 574);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnAliasp12);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCopiarcp);
@@ -267,6 +280,7 @@
             this.Controls.Add(this.btn3);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,5 +309,6 @@
         private Button btnCopiarcp;
         private Button button1;
         private Button btnAliasp12;
+        private Button btnLimpiar;
     }
 }

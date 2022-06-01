@@ -38,7 +38,7 @@ namespace appNinox1
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtCsr_TextChanged(object sender, EventArgs e)
@@ -74,11 +74,42 @@ namespace appNinox1
 
         private void btnCopiarcp_Click(object sender, EventArgs e)
         {
-            string btnGenerar = Clipboard.SetText(txtCp.Text);
+            Clipboard.SetText(txtCp.Text);
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            Clipboard.SetText(txtCsr.Text);
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtCsr.Text = String.Empty;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string cuit = txtCuit.Text;
+            string carpeta = @"c:\desktiop";
+            string path = Path.Combine(carpeta, "cuit");
+
+
+            if (Directory.Exists(path))
+            {
+                MessageBox.Show("Carpeta Existe");
+            } else
+            {
+                MessageBox.Show("La carpeta no existe, creando...");
+                Directory.CreateDirectory(path);
+            }
+
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
         }
     }
+
+}
