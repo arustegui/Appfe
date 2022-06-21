@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace appNinox1
 {
     public partial class Form1 : Form
@@ -29,11 +31,7 @@ namespace appNinox1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string cuit = txtCuit.Text;
-            string rSocial = txtRsocial.Text;
-            string comandoCsr = $"C:\\OpenSSL-Win64\\bin\\OpenSSL.exe req -new -key privada -subj \"/C=AR/O={rSocial}/CN=ninoxnet2022/serialNumber=CUIT {cuit}\" -out pedido";
 
-            txtCsr.Text = comandoCsr;
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
@@ -53,10 +51,7 @@ namespace appNinox1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string cp = txtCp.Text;
-            string comandoCp = $"C:\\OpenSSL-Win64\\bin\\OpenSSL.exe genrsa -out privada 2048";
 
-            txtCp.Text = comandoCp;
         }
 
         private void textBox1_TextChanged_2(object sender, EventArgs e)
@@ -66,10 +61,9 @@ namespace appNinox1
 
         private void btn3_Click(object sender, EventArgs e)
         {
-            string aliasp12 = txtAliasp12.Text;
             string comandoAliasp12 = $"C:\\OpenSSL-Win64\\bin\\OpenSSL.exe pkcs12 -export -inkey privada -in resultado.crt -out alias.p12";
 
-            txtAliasp12.Text = aliasp12;
+            txtAliasp12.Text = comandoAliasp12;
         }
 
         private void btnCopiarcp_Click(object sender, EventArgs e)
@@ -85,22 +79,29 @@ namespace appNinox1
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtCsr.Text = String.Empty;
+            txtCp.Text = String.Empty;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string cuit = txtCuit.Text;
-            string carpeta = @"c:\desktiop";
-            string path = Path.Combine(carpeta, "cuit");
+            string carpeta = @"c:\desktop";
+            string erpAlias = txtErpAlias.Text;
+
+            string path = Path.Combine(carpeta,erpAlias);
 
 
             if (Directory.Exists(path))
             {
                 MessageBox.Show("Carpeta Existe");
-            } else
+                Process.Start("explorer.exe", path);
+            } 
+            
+            else
             {
-                MessageBox.Show("La carpeta no existe, creando...");
-                Directory.CreateDirectory(path);
+                MessageBox.Show("Creando la carpeta...");
+                System.IO.Directory.CreateDirectory(path);
+                Process.Start("explorer.exe", path);
+
             }
 
 
@@ -108,6 +109,20 @@ namespace appNinox1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnGenerarCpCsr_Click(object sender, EventArgs e)
+        {
+            string comandoCp = $"C:\\OpenSSL-Win64\\bin\\OpenSSL.exe genrsa -out privada 2048";
+
+            txtCp.Text = comandoCp;
+
+            string cuit = txtCuit.Text;
+            string rSocial = txtRsocial.Text;
+            string comandoCsr = $"C:\\OpenSSL-Win64\\bin\\OpenSSL.exe req -new -key privada -subj \"/C=AR/O={rSocial}/CN=ninoxnet2022/serialNumber=CUIT {cuit}\" -out pedido";
+
+            txtCsr.Text = comandoCsr;
 
         }
     }
