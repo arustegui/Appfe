@@ -9,57 +9,7 @@ namespace appNinox1
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cuit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCsr_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn3_Click(object sender, EventArgs e)
+        private void btnGenerarP12_Click(object sender, EventArgs e)
         {
             string comandoAliasp12 = $"C:\\OpenSSL-Win64\\bin\\OpenSSL.exe pkcs12 -export -inkey privada -in resultado.crt -out alias.p12";
 
@@ -71,51 +21,48 @@ namespace appNinox1
             Clipboard.SetText(txtCp.Text);
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnCopiarCsr_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(txtCsr.Text);
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            txtCsr.Text = String.Empty;
+            txtRsocial.Text = String.Empty;
+            txtCuit.Text = String.Empty;
+            txtErpAlias.Text = String.Empty;
             txtCp.Text = String.Empty;
+            txtCsr.Text = String.Empty;
+            txtAliasp12.Text = String.Empty;
+            txtVencimiento.Text = String.Empty;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCrearCarpeta_Click(object sender, EventArgs e)
         {
-            string carpeta = @"c:\desktop";
-            string erpAlias = txtErpAlias.Text;
+            string rootDir = AppDomain.CurrentDomain.BaseDirectory;
+            string dataDir = Path.Combine(rootDir, "data");
 
-            string path = Path.Combine(carpeta,erpAlias);
+            string aliasNinox = txtErpAlias.Text;
+            string aliasDir = Path.Combine(dataDir, aliasNinox);
 
-
-            if (Directory.Exists(path))
+            if (Directory.Exists(aliasDir))
             {
                 MessageBox.Show("Carpeta Existe");
-                Process.Start("explorer.exe", path);
+                Process.Start("explorer.exe", aliasDir);
             } 
             
             else
             {
                 MessageBox.Show("Creando la carpeta...");
-                System.IO.Directory.CreateDirectory(path);
-                Process.Start("explorer.exe", path);
-
+                System.IO.Directory.CreateDirectory(aliasDir);
+                Process.Start("explorer.exe", aliasDir);
             }
-
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnGenerarCpCsr_Click(object sender, EventArgs e)
         {
             string comandoCp = $"C:\\OpenSSL-Win64\\bin\\OpenSSL.exe genrsa -out privada 2048";
-
+ 
             txtCp.Text = comandoCp;
 
             string cuit = txtCuit.Text;
@@ -125,6 +72,7 @@ namespace appNinox1
             txtCsr.Text = comandoCsr;
 
         }
+
     }
 
 }
